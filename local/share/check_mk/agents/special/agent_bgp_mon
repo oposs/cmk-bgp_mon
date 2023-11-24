@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Copyright (C) 2023 OETIKER+PARTNER AG - License: GNU General Public License v2
+# pylint: disable=undefined-variable
+# type: ignore[name-defined]
+
+import sys
+from cmk.special_agents.agent_bgp_mon import main
+
+if __name__ == "__main__":
+    sys.exit(main())
