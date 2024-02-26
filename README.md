@@ -4,7 +4,8 @@ This extension pack contains a checkmk special agent which can contact your netw
 
 The special agent is designed to support different types of devices. At the moment the folloing devices are supported:
 
-* Cisco Nexus 9000
+* Cisco Nexus 9000 (HTTP/HTTPS)
+* Huawei Sx700 (SSH)
 
 More drivers will be added in the future.
 
