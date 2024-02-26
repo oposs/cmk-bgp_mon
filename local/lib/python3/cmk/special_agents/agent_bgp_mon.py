@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3	
 # Copyright (C) 2023 OETIIKER+PARTNER AG – License: GNU General Public License v2
 
 """
@@ -8,6 +8,7 @@ Special agent for monitoring bgp Sessions with Check_MK.
 import argparse
 import logging
 import sys
+import traceback
 import os
 import json
 import urllib3
@@ -16,7 +17,7 @@ import requests
 from cmk.utils.password_store import replace_passwords
 from pprint import pprint
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 import time
 
 
@@ -180,6 +181,124 @@ class ciscoFetcher:
                             result.append(nb)                        
         return result
 
+class huaweiFetcher:
+    # make sure to run 
+    #  pip3 install pexpect
+    # in the checkmk instance where this plugin is installed
+    import pexpect
+    timeout = 30
+
+    def __init__(self, hostaddress, username, password) -> None:  # type:ignore[no-untyped-def]
+        self._username = username
+        self._password = password
+        self._host = hostaddress
+
+    def __more(self,cmd):
+        # LOGGER.debug('sending: %s', cmd)
+        self._child.sendline(cmd)
+        index = 0
+        output = ""
+        while index == 0:
+            index = self._child.expect(['---- More ----','<.+?>'],timeout=self.timeout)
+            line = self._child.before
+            # LOGGER.debug("got: %s",line)
+            output += line
+            if index == 0:
+                self._child.send(' ')
+        return output
+
+    def fetch(self):
+        if self._host == "test":
+            with open("/tmp/huawei_bgp_data.txt",'r',encoding='utf-8') as f:
+                return self.__postprocess(f.read())
+        # Initiate SSH session
+        self._child = child = self.pexpect.spawn(f"ssh {self._username}@{self._host}", encoding='utf-8')
+        password_prompt = ".*assword:"
+        ssh_newkey = "Are you sure you want to continue connecting"
+        output = ""
+        try:
+            # Handle initial connection prompt
+            index = child.expect([ssh_newkey, password_prompt],timeout=self.timeout)
+            if index == 0:
+                child.sendline("yes")
+                index = child.expect([password_prompt],timeout=self.timeout)
+            # Handle authentication prompts
+            if index == 1:
+                child.sendline(self._password)
+            # Expect switch prompt and execute command
+            child.expect("<.+?>",timeout=self.timeout)
+            output += self.__more("display bgp vpnv4 all peer verbose")
+            output += self.__more("display bgp vpnv6 all peer verbose")
+            child.sendline("exit")
+        except:
+            LOGGER.debug("failed to read data: %s", str(self._child))
+            raise RuntimeError("Failed to fetch data "+str(self._child))
+
+        try:
+            LOGGER.debug("Sending output to postprocessing")
+            return self.__postprocess(output)
+        except:
+            LOGGER.debug("failed to parse output")
+            LOGGER.debug("response : %s", output)
+            raise ValueError("Got invalid data from host")
+
+
+    def __duration_string_to_seconds(self,duration_str):
+        # Define a regular expression for extracting components
+        pattern = re.compile(r'(?:([0-9]+)d)?(?:([0-9]+)h)?(?:([0-9]+)m)?(?:([0-9]+)s)?')
+
+        # Extract components from the duration string
+        match = pattern.match(duration_str)
+        days, hours, minutes, seconds = map(int, match.groups(default=0))
+
+        # Get the current date and time
+        current_date = datetime.now()
+
+        # Use mktime to directly convert the adjusted date to epoch seconds
+        epoch_seconds = int(time.mktime((
+            current_date.year,
+            current_date.month,
+            current_date.day - days,
+            current_date.hour - hours,
+            current_date.minute - minutes,
+            current_date.second - seconds,
+            -1, -1, -1
+        )))
+
+        # Calculate the difference from the current time
+        difference = int(datetime.now().timestamp()) - epoch_seconds
+
+        return difference
+
+
+    def __postprocess(self, data):
+        LOGGER.debug("Got data for postprocessing (%i bytes)", len(data))
+       
+        result = []
+        pattern = r"""
+            (?:family\sfor\sVPN\sinstance:\s+(?P<vrf_name_out>\S+).+?)?
+            BGP\sPeer\sis\s(?P<neighbourid>\S+),\s+
+                remote\sAS\s(?P<neighbouras>\S+).+?
+            BGP\scurrent\sstate:\s(?P<state>\S+)
+                (?:,\sUp\sfor\s(?P<uptime>\S+))?\r?\n
+        """
+        ip_pattern = re.compile(r"\d+\.\d+\.\d+\.\d+")
+        for match in re.finditer(pattern, data, re.VERBOSE | re.DOTALL | re.IGNORECASE ):
+            uptime = match.group("uptime")
+            LOGGER.debug("processed line")
+            nb = {
+                "vrf-name-out": match.group("vrf_name_out"),
+                "af-name": "ipv4" if ip_pattern.search(match.group("neighbourid")) else "ipv6",
+                "neighbourid": match.group("neighbourid"),
+                "neighbouras": match.group("neighbouras"),
+                "state": match.group("state"),
+                "uptime": None if uptime is None else self.__duration_string_to_seconds(uptime)
+            }
+            result.append(nb)
+            LOGGER.debug("processed line")
+
+        LOGGER.debug("Returning postprocessed data")
+        return result
 
 def main(argv=None):
     replace_passwords()
@@ -188,13 +307,22 @@ def main(argv=None):
     try:
         if args.driver == "cisco_http" or args.driver == "cisco_https":
             for session in ciscoFetcher(
-                args.hostaddress, args.username, args.password, args.driver,
+                args.hostaddress, args.username, args.password,args.driver,
+            ).fetch():
+                # turn the session content into a single line json string
+                sys.stdout.write(json.dumps(session,sort_keys=True,separators=(',', ':')) + "\n")
+        elif args.driver == "huawei":
+            for session in huaweiFetcher(
+                args.hostaddress, args.username, args.password
             ).fetch():
                 # turn the session content into a single line json string
                 sys.stdout.write(json.dumps(session,sort_keys=True,separators=(',', ':')) + "\n")
         else:
             raise RuntimeError("Unknown driver")
     except Exception as e:
-        sys.stdout.write(f"Error: {e}")
+        formatted_traceback = traceback.format_exc()
+        print(formatted_traceback)
+        print(f"Error: {e}")
         sys.exit(1)
+
     sys.exit(0)

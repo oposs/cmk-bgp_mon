@@ -36,6 +36,7 @@ def _valuespec_special_agents_bgp_mon():
                     choices=[
                         ("cisco_http", _("Cisco Nexus 9000 HTTP")),
                         ("cisco_https", _("Cisco Nexus 9000 HTTPS")),
+                        ("huawei", _("Huawei Sx700 SSH")),
                     ],
                     default="cisco_http",
                 ),
