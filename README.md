@@ -7,6 +7,8 @@ The special agent is designed to support different types of devices. At the mome
 * Cisco Nexus 9000 (HTTP/HTTPS)
 * Huawei Sx700 (SSH)
 
+This Plugin contains a copy of pexpect to be able to remote ssh into the Huawei switch.
+
 More drivers will be added in the future.
 
 ![2023-11-24_09-04](https://github.com/oposs/cmk-bgp_mon/assets/429279/7ae8f624-cd13-420b-93f9-68b678548c9e)  
