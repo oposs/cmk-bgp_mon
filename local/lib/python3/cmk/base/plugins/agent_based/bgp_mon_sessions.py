@@ -69,7 +69,7 @@ register.agent_section(
 
 register.check_plugin(
     name="bgp_mon_sessions",
-    service_name="BGP – %s",
+    service_name="BGP %s",
     discovery_function=discover_sessions,
     check_function=check_bgp_mon_sessions,
 )
