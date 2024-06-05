@@ -188,11 +188,13 @@ class huaweiFetcher:
     import pexpect
     timeout = 30
 
-    def __init__(self, hostaddress, username, password) -> None:  # type:ignore[no-untyped-def]
-        self._username = username
-        self._password = password
-        self._host = hostaddress
-
+    def __init__(self, args) -> None:  # type:ignore[no-untyped-def]
+        self._username = args.username
+        self._password = args.password
+        self._host = args.hostaddress
+        self._debug = args.debug
+        self._verbose = args.verbose
+        
     def __more(self,cmd):
         # LOGGER.debug('sending: %s', cmd)
         self._child.sendline(cmd)
@@ -273,19 +275,19 @@ class huaweiFetcher:
 
     def __postprocess(self, data):
         LOGGER.debug("Got data for postprocessing (%i bytes)", len(data))
-       
+        LOGGER.debug("DATA ============================\n%s",data)       
         result = []
         pattern = r"""
-            (?:family\sfor\sVPN\sinstance:\s+(?P<vrf_name_out>\S+).+?)?
-            BGP\sPeer\sis\s(?P<neighbourid>\S+),\s+
-                remote\sAS\s(?P<neighbouras>\S+).+?
-            BGP\scurrent\sstate:\s(?P<state>\S+)
+            family\sfor\sVPN\sinstance:\s+(?P<vrf_name_out>\S+)\s+
+            BGP\sPeer\sis\s(?P<neighbourid>[^\s,]+),\s+
+                remote\sAS\s(?P<neighbouras>\S+).{0,190}
+            BGP\scurrent\sstate:\s(?P<state>[^\s,]+)
                 (?:,\sUp\sfor\s(?P<uptime>\S+))?\r?\n
         """
         ip_pattern = re.compile(r"\d+\.\d+\.\d+\.\d+")
         for match in re.finditer(pattern, data, re.VERBOSE | re.DOTALL | re.IGNORECASE ):
+            LOGGER.debug("Found Match --------------------\n%s",match.group(0));
             uptime = match.group("uptime")
-            LOGGER.debug("processed line")
             nb = {
                 "vrf-name-out": match.group("vrf_name_out"),
                 "af-name": "ipv4" if ip_pattern.search(match.group("neighbourid")) else "ipv6",
@@ -295,7 +297,6 @@ class huaweiFetcher:
                 "uptime": None if uptime is None else self.__duration_string_to_seconds(uptime)
             }
             result.append(nb)
-            LOGGER.debug("processed line")
 
         LOGGER.debug("Returning postprocessed data")
         return result
@@ -312,9 +313,7 @@ def main(argv=None):
                 # turn the session content into a single line json string
                 sys.stdout.write(json.dumps(session,sort_keys=True,separators=(',', ':')) + "\n")
         elif args.driver == "huawei":
-            for session in huaweiFetcher(
-                args.hostaddress, args.username, args.password
-            ).fetch():
+            for session in huaweiFetcher(args).fetch():
                 # turn the session content into a single line json string
                 sys.stdout.write(json.dumps(session,sort_keys=True,separators=(',', ':')) + "\n")
         else:

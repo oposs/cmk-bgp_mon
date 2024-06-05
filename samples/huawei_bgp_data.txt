@@ -335,3 +335,123 @@
  No import distribute policy
  No export distribute policy
  Tracking has been enabled, and the delay is 9s
+
+Tracking has been enabled, and the delay is 9s
+
+        BGP Peer is 172.x.x.x,  remote AS 65brk0
+        Type: EBGP link
+        BGP version 4, Remote router ID 172.x.x.x
+        Update-group ID: 1
+        BGP current state: Established, Up for 289d12h30m12s
+        BGP current event: RecvKeepalive
+        BGP last state: OpenConfirm
+        BGP Peer Up count: 4
+        Received total routes: 20
+        Received active routes total: 18
+        Received mac routes: 0
+        Advertised total routes: 1
+        Port:  Local - 54872    Remote - 179
+        Configured: Connect-retry Time: 32 sec
+        Configured: Min Hold Time: 0 sec
+        Configured: Active Hold Time: 180 sec   Keepalive Time:60 sec
+        Received  : Active Hold Time: 180 sec
+        Negotiated: Active Hold Time: 180 sec   Keepalive Time:60 sec
+        Peer optional capabilities:
+        Peer supports bgp multi-protocol extension
+        Peer supports bgp route refresh capability
+        Peer supports bgp 4-byte-as capability
+        Graceful Restart Capability: received
+        Address family IPv4 Unicast: advertised and received
+ Received: Total 417049 messages
+                 Update messages                192
+                 Open messages                  1
+                 KeepAlive messages             416856
+                 Notification messages          0
+                 Refresh messages               0
+ Sent: Total 416979 messages
+                 Update messages                172
+                 Open messages                  1
+                 KeepAlive messages             416806
+                 Notification messages          0
+                 Refresh messages               0
+ Authentication type configured: None
+ Last keepalive received: 2024-03-15 07:47:02+01:00
+ Last keepalive sent    : 2024-03-15 07:46:37+01:00
+ Last update    received: 2024-03-15 00:12:14+01:00
+ Last update    sent    : 2024-03-15 00:13:09+01:00
+ Minimum route advertisement interval is 30 seconds
+ Optional capabilities:
+ Route refresh capability has been enabled
+ 4-byte-as capability has been enabled
+ Peer's BFD has been enabled
+ Peer Preferred Value: 0
+ Routing policy configured:
+ No import update filter list
+ No export update filter list
+ No import prefix list
+ No export prefix list
+ No import route policy
+ Export route policy is: DEFAULT-ONLY
+ No import distribute policy
+ No export distribute policy
+ Tracking has been enabled, and the delay is 9s
+ 
+Tracking has been enabled, and the delay is 9s
+
+        BGP Peer is 172.x.3.1,  remote AS 65brk1
+        Type: EBGP link
+        BGP version 4, Remote router ID 172.x.x.x
+        Update-group ID: 0
+        BGP current state: Established, Up for 289d12h30m12s
+        BGP current event: RecvKeepalive
+        BGP last state: OpenConfirm
+        BGP Peer Up count: 4
+        Received total routes: 316
+        Received active routes total: 174
+        Received mac routes: 0
+        Advertised total routes: 1
+        Port:  Local - 51216    Remote - 179
+        Configured: Connect-retry Time: 32 sec
+        Configured: Min Hold Time: 0 sec
+        Configured: Active Hold Time: 180 sec   Keepalive Time:60 sec
+        Received  : Active Hold Time: 180 sec
+        Negotiated: Active Hold Time: 180 sec   Keepalive Time:60 sec
+        Peer optional capabilities:
+        Peer supports bgp multi-protocol extension
+        Peer supports bgp route refresh capability
+        Peer supports bgp 4-byte-as capability
+        Graceful Restart Capability: received
+        Address family IPv4 Unicast: advertised and received
+ Received: Total 418637 messages
+                 Update messages                2038
+                 Open messages                  1
+                 KeepAlive messages             416598
+                 Notification messages          0
+                 Refresh messages               0
+ Sent: Total 416978 messages
+                 Update messages                171
+                 Open messages                  1
+                 KeepAlive messages             416806
+                 Notification messages          0
+                 Refresh messages               0
+ Authentication type configured: None
+ Last keepalive received: 2024-03-15 07:47:02+01:00
+ Last keepalive sent    : 2024-03-15 07:46:38+01:00
+ Last update    received: 2024-03-15 00:12:15+01:00
+ Last update    sent    : 2024-03-15 00:13:10+01:00
+ Minimum route advertisement interval is 30 seconds
+ Optional capabilities:
+ Route refresh capability has been enabled
+ 4-byte-as capability has been enabled
+ Peer's BFD has been enabled
+ Peer Preferred Value: 0
+ Routing policy configured:
+ No import update filter list
+ No export update filter list
+ No import prefix list
+ No export prefix list
+ No import route policy
+ Export route policy is: DEFAULT-ONLY
+ No import distribute policy
+ No export distribute policy
+ Tracking has been enabled, and the delay is 9s
