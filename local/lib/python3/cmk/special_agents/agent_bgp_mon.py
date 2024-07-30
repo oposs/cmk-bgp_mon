@@ -11,6 +11,7 @@ import sys
 import traceback
 import os
 import json
+import base64
 import urllib3
 urllib3.disable_warnings()
 import requests
@@ -207,7 +208,8 @@ class huaweiFetcher:
             output += line
             if index == 0:
                 self._child.send(' ')
-        return output
+        
+        return re.sub(r"^.*\x1b\[42D","",output,flags=re.MULTILINE)
 
     def fetch(self):
         if self._host == "test":
@@ -275,14 +277,14 @@ class huaweiFetcher:
 
     def __postprocess(self, data):
         LOGGER.debug("Got data for postprocessing (%i bytes)", len(data))
-        LOGGER.debug("DATA ============================\n%s",data)       
+        LOGGER.debug("DATA ============================\n%s", base64.encodebytes(data.encode('ascii')).decode('utf-8'))
         result = []
         pattern = r"""
-            family\sfor\sVPN\sinstance:\s+(?P<vrf_name_out>\S+)\s+
+            (family\sfor\sVPN\sinstance:\s+(?P<vrf_name_out>\S+))?\s+
             BGP\sPeer\sis\s(?P<neighbourid>[^\s,]+),\s+
                 remote\sAS\s(?P<neighbouras>\S+).{0,190}
             BGP\scurrent\sstate:\s(?P<state>[^\s,]+)
-                (?:,\sUp\sfor\s(?P<uptime>\S+))?\r?\n
+                (?:,\sUp\sfor\s+(?P<uptime>\S+))?\s*\n
         """
         ip_pattern = re.compile(r"\d+\.\d+\.\d+\.\d+")
         for match in re.finditer(pattern, data, re.VERBOSE | re.DOTALL | re.IGNORECASE ):
