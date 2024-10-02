@@ -1,0 +1,834 @@
+<response status="success">
+    <result>
+        <entry peer="FUSION_x.x.x.16" vr="D-xxx-xx">
+            <peer-group>D-xxx-xx_FUSION</peer-group>
+            <peer-router-id>x.x.x.82</peer-router-id>
+            <remote-as>65001</remote-as>
+            <status>Established</status>
+            <status-duration>30202500</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>x.x.x.16:51913</peer-address>
+            <local-address>x.x.x.17:179</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>10</msg-update-in>
+            <msg-update-out>149</msg-update-out>
+            <msg-total-in>505604</msg-total-in>
+            <msg-total-out>581495</msg-total-out>
+            <last-update-age>11</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>3</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv4 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800010100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>65001</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv4-unicast">
+                    <incoming-total>1</incoming-total>
+                    <incoming-accepted>1</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>36</outgoing-total>
+                    <outgoing-advertised>36</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+        <entry peer="DMZ-xxx_x.x.x.16" vr="D-xxx-xx">
+            <peer-group>DMZ-xxx-I-899</peer-group>
+            <peer-router-id>x.x.x.16</peer-router-id>
+            <remote-as>4200020800</remote-as>
+            <status>Established</status>
+            <status-duration>30202499</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>x.x.x.16:179</peer-address>
+            <local-address>x.x.x.17:41727</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>167</msg-update-in>
+            <msg-update-out>153</msg-update-out>
+            <msg-total-in>505740</msg-total-in>
+            <msg-total-out>581426</msg-total-out>
+            <last-update-age>29</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>4</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv4 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800010100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>4200020800</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv4-unicast">
+                    <incoming-total>5</incoming-total>
+                    <incoming-accepted>5</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>32</outgoing-total>
+                    <outgoing-advertised>32</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+        <entry peer="DMZ-xxx_x.x.x.144" vr="D-xxx-xx">
+            <peer-group>DMZ-xxx-I-899</peer-group>
+            <peer-router-id>x.x.x.144</peer-router-id>
+            <remote-as>4200020800</remote-as>
+            <status>Established</status>
+            <status-duration>30202490</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>x.x.x.144:22865</peer-address>
+            <local-address>x.x.x.145:179</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>158</msg-update-in>
+            <msg-update-out>150</msg-update-out>
+            <msg-total-in>505733</msg-total-in>
+            <msg-total-out>581448</msg-total-out>
+            <last-update-age>1</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>4</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv4 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800010100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>4200020800</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv4-unicast">
+                    <incoming-total>5</incoming-total>
+                    <incoming-accepted>5</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>32</outgoing-total>
+                    <outgoing-advertised>32</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+        <entry peer="DMZ-xxx_x.x.x.16" vr="D-xxx-xx">
+            <peer-group>DMZ-xxx-I-844</peer-group>
+            <peer-router-id>x.x.x.16</peer-router-id>
+            <remote-as>4200020801</remote-as>
+            <status>Established</status>
+            <status-duration>30202500</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>x.x.x.16:179</peer-address>
+            <local-address>x.x.x.17:38519</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>246</msg-update-in>
+            <msg-update-out>25</msg-update-out>
+            <msg-total-in>505808</msg-total-in>
+            <msg-total-out>581394</msg-total-out>
+            <last-update-age>11</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>4</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv4 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800010100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>4200020801</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv4-unicast">
+                    <incoming-total>25</incoming-total>
+                    <incoming-accepted>25</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>12</outgoing-total>
+                    <outgoing-advertised>12</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+        <entry peer="DMZ-xxx_x.x.x.18" vr="D-xxx-xx">
+            <peer-group>DMZ-xxx-I-812</peer-group>
+            <peer-router-id>x.x.x.18</peer-router-id>
+            <remote-as>4200020802</remote-as>
+            <status>Established</status>
+            <status-duration>30202500</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>x.x.x.18:179</peer-address>
+            <local-address>x.x.x.19:42931</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>164</msg-update-in>
+            <msg-update-out>150</msg-update-out>
+            <msg-total-in>505740</msg-total-in>
+            <msg-total-out>581533</msg-total-out>
+            <last-update-age>0</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>4</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv4 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800010100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>4200020802</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv4-unicast">
+                    <incoming-total>6</incoming-total>
+                    <incoming-accepted>6</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>31</outgoing-total>
+                    <outgoing-advertised>31</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+        <entry peer="DMZ_xxx_x.x.x.144" vr="D-xxx-xx">
+            <peer-group>DMZ-xxx-I-844</peer-group>
+            <peer-router-id>x.x.x.144</peer-router-id>
+            <remote-as>4200020801</remote-as>
+            <status>Established</status>
+            <status-duration>30202492</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>x.x.x.144:179</peer-address>
+            <local-address>x.x.x.145:34457</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>232</msg-update-in>
+            <msg-update-out>23</msg-update-out>
+            <msg-total-in>505793</msg-total-in>
+            <msg-total-out>581441</msg-total-out>
+            <last-update-age>11</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>4</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv4 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800010100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>4200020801</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv4-unicast">
+                    <incoming-total>25</incoming-total>
+                    <incoming-accepted>25</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>12</outgoing-total>
+                    <outgoing-advertised>12</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+        <entry peer="DMZ-xxx_x.x.x.146" vr="D-xxx-xx">
+            <peer-group>DMZ-xxx-I-812</peer-group>
+            <peer-router-id>x.x.x.146</peer-router-id>
+            <remote-as>4200020802</remote-as>
+            <status>Established</status>
+            <status-duration>30202491</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>x.x.x.146:179</peer-address>
+            <local-address>x.x.x.147:36143</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>162</msg-update-in>
+            <msg-update-out>148</msg-update-out>
+            <msg-total-in>505735</msg-total-in>
+            <msg-total-out>581504</msg-total-out>
+            <last-update-age>1</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>4</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv4 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800010100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>4200020802</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv4-unicast">
+                    <incoming-total>6</incoming-total>
+                    <incoming-accepted>6</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>31</outgoing-total>
+                    <outgoing-advertised>31</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+        <entry peer="FUSION_x_1" vr="D-xxx-xx">
+            <peer-group>D-xxx-xx_FUSION</peer-group>
+            <peer-router-id>x.x.x.82</peer-router-id>
+            <remote-as>65001</remote-as>
+            <status>Established</status>
+            <status-duration>30202498</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>2a07::1:179</peer-address>
+            <local-address>2a07:;f:44675</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>10</msg-update-in>
+            <msg-update-out>13</msg-update-out>
+            <msg-total-in>505604</msg-total-in>
+            <msg-total-out>581525</msg-total-out>
+            <last-update-age>11</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>4</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv6 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800020100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>65001</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv6-unicast">
+                    <incoming-total>1</incoming-total>
+                    <incoming-accepted>1</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>12</outgoing-total>
+                    <outgoing-advertised>12</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+        <entry peer="DMZ_xxx_V6_10_x_1" vr="D-xxx-xx">
+            <peer-group>DMZ-xxx-I-899</peer-group>
+            <peer-router-id>x.x.x.16</peer-router-id>
+            <remote-as>4200020800</remote-as>
+            <status>Established</status>
+            <status-duration>30202500</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>2a07::55571</peer-address>
+            <local-address>2a07::f:179</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>11</msg-update-in>
+            <msg-update-out>18</msg-update-out>
+            <msg-total-in>505604</msg-total-in>
+            <msg-total-out>581542</msg-total-out>
+            <last-update-age>18</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>3</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv6 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800020100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>4200020800</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv6-unicast">
+                    <incoming-total>4</incoming-total>
+                    <incoming-accepted>4</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>9</outgoing-total>
+                    <outgoing-advertised>9</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+        <entry peer="DMZ-xxx_V6_10_2308_1" vr="D-xxx-xx">
+            <peer-group>DMZ-xxx-I-844</peer-group>
+            <peer-router-id>x.x.x.16</peer-router-id>
+            <remote-as>4200020801</remote-as>
+            <status>Established</status>
+            <status-duration>30202498</status-duration>
+            <password-set>no</password-set>
+            <passive>no</passive>
+            <multi-hop-ttl>1</multi-hop-ttl>
+            <peer-address>2a07:2902::1:179</peer-address>
+            <local-address>2a07:2902::f:34923</local-address>
+            <reflector-client>not-client</reflector-client>
+            <same-confederation>no</same-confederation>
+            <aggregate-confed-as>yes</aggregate-confed-as>
+            <peering-type>Unspecified</peering-type>
+            <connect-retry-interval>15</connect-retry-interval>
+            <open-delay>0</open-delay>
+            <idle-hold>15</idle-hold>
+            <prefix-limit>5000</prefix-limit>
+            <holdtime>90</holdtime>
+            <holdtime-config>90</holdtime-config>
+            <keepalive>30</keepalive>
+            <keepalive-config>30</keepalive-config>
+            <msg-update-in>11</msg-update-in>
+            <msg-update-out>18</msg-update-out>
+            <msg-total-in>505604</msg-total-in>
+            <msg-total-out>581420</msg-total-out>
+            <last-update-age>18</last-update-age>
+            <last-error></last-error>
+            <status-flap-counts>4</status-flap-counts>
+            <established-counts>1</established-counts>
+            <ORF-entry-received>0</ORF-entry-received>
+            <nexthop-self>no</nexthop-self>
+            <nexthop-thirdparty>yes</nexthop-thirdparty>
+            <nexthop-peer>no</nexthop-peer>
+            <config>
+                <remove-private-as>no</remove-private-as>
+            </config>
+            <peer-capability>
+                <list>
+                    <capability>Multiprotocol Extensions(1)</capability>
+                    <value>IPv6 Unicast</value>
+                </list>
+                <list>
+                    <capability>Route Refresh(2)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Extended Next Hop Encoding(5)</capability>
+                    <value>000100010002000100800002</value>
+                </list>
+                <list>
+                    <capability>Graceful Restart(64)</capability>
+                    <value>007800020100</value>
+                </list>
+                <list>
+                    <capability>4-Byte AS Number(65)</capability>
+                    <value>4200020801</value>
+                </list>
+                <list>
+                    <capability>Deprecated(66)</capability>
+                    <value>yes</value>
+                </list>
+                <list>
+                    <capability>Dynamic Capability(67)</capability>
+                    <value>020140</value>
+                </list>
+                <list>
+                    <capability>Route Refresh (Cisco)(128)</capability>
+                    <value>yes</value>
+                </list>
+            </peer-capability>
+            <prefix-counter>
+                <entry afi-safi="bgpAfiIpv6-unicast">
+                    <incoming-total>4</incoming-total>
+                    <incoming-accepted>4</incoming-accepted>
+                    <incoming-rejected>0</incoming-rejected>
+                    <policy-rejected>0</policy-rejected>
+                    <outgoing-total>9</outgoing-total>
+                    <outgoing-advertised>9</outgoing-advertised>
+                </entry>
+            </prefix-counter>
+        </entry>
+    </result>
+</response>
