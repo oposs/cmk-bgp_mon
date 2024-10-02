@@ -47,7 +47,7 @@ def check_bgp_mon_sessions(item: Any, section: Section) -> CheckResult:
     session_status = result.get("state", "").lower()
     for key in ['vrf-name-out', 'af-name', 'neighbourid', 'neighbouras']:
         yield Result(state=State.OK, summary=f"{key}: {result.get(key,'n/a')}")
-    
+
     if "uptime" in result and result["uptime"] is not None:
         yield Metric(
             name="uptime",

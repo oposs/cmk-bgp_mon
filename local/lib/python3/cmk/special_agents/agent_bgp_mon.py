@@ -20,7 +20,7 @@ from pprint import pprint
 import re
 from datetime import datetime, timedelta
 import time
-
+import xml.etree.ElementTree as ET
 
 LOGGER = logging.getLogger(__name__)
 
@@ -182,6 +182,102 @@ class ciscoFetcher:
                             result.append(nb)                        
         return result
 
+class paloaltoFetcher:
+    def __init__(self, args) -> None:  # type:ignore[no-untyped-def]
+        self._username = args.username
+        self._password = args.password
+        self._host = args.hostaddress
+        self._endpoint = "https://%s/api/"  % self._host
+        self._debug = args.debug
+        self._verbose = args.verbose
+
+    def fetch(self):
+        # if host is test and file is readable
+        if self._host == "test" and os.access("/tmp/paloalto_bgp_data.xml", os.R_OK):        
+            with open("/tmp/paloalto_bgp_data.xml") as f:
+                return self.__postprocess(f.read())
+
+        kg_response = requests.get(self._endpoint, {
+                'type': "keygen",
+                'user': self._username,
+                'password': self._password,
+            },
+            verify=False,  # nosec
+        )
+
+        if kg_response.status_code != 200:
+            LOGGER.warning("response status code: %s", response.status_code)
+            LOGGER.warning("response : %s", response.text)
+            raise RuntimeError("Failed to fetch key")
+        else:
+            LOGGER.debug("success! response: %s", response.text)
+
+        kg_key = self.__getKey(kg_response.text)
+        
+        op_response = requests.get(self._endpoint, {
+                'type': "op",
+                'key': kg_key,
+                'cmd': "<show><routing><protocol><bgp><peer></peer></bgp></protocol></routing></show>",
+            },
+            verify=False,  # nosec
+        )
+
+        if op_response.status_code != 200:
+            LOGGER.warning("response status code: %s", response.status_code)
+            LOGGER.warning("response : %s", response.text)
+            raise RuntimeError("Failed to fetch bgp status")
+        else:
+            LOGGER.debug("success! response: %s", response.text)
+                    
+        try:
+            return self.__postprocess(response.text)
+        except Exception as e:
+            LOGGER.warning("error processing response: %s", e)
+            LOGGER.warning("response : %s", response.text)
+            raise ValueError("Got invalid data from host")
+
+    def __getKey(self,xml):
+        root = ET.fromstring(xml)
+        status = root.attrib.get('status')
+        if status != 'success':
+            LOGGER.warning("Request failed. Got %s", xml)
+            raise ValueError("Got no auth key")
+
+        # Find the 'key' element
+        key_element = root.find('.//key')
+        if key_element is not None:
+            LOGGER.debug("Got auth key: %s",key_element.text)
+            return key_element.text
+ 
+        LOGGER.warning("Failed to extract key from: %s");
+        raise ValueError("Got no auth key")
+
+    def __postprocess(self, xml):
+        root = ET.fromstring(xml)
+        status = root.attrib.get('status')
+
+        if status != 'success':
+            LOGGER.warning("Request failed. Got %s", xml)
+            raise ValueError("Got no bgp status information")
+
+        result = []
+        for entry in root.findall('./result/entry'):
+            vrf_name_out = entry.get('vr')            
+            af_name = entry.find('./prefix-counter/entry').get('afi-safi')
+            neighbourid = entry.find('peer-router-id').text
+            state = entry.find('status').text
+            uptime = entry.find('status-duration').text
+
+            result.append({
+                'vrf-name-out': vrf_name_out,
+                'af-name': af_name,
+                'neighbourid': neighbourid,
+                'state': state,
+                'uptime': int(uptime),
+            })
+            
+        return result
+
 class huaweiFetcher:
     # make sure to run 
     #  pip3 install pexpect
@@ -316,6 +412,10 @@ def main(argv=None):
                 sys.stdout.write(json.dumps(session,sort_keys=True,separators=(',', ':')) + "\n")
         elif args.driver == "huawei":
             for session in huaweiFetcher(args).fetch():
+                # turn the session content into a single line json string
+                sys.stdout.write(json.dumps(session,sort_keys=True,separators=(',', ':')) + "\n")
+        elif args.driver == "paloalto":
+            for session in paloaltoFetcher(args).fetch():
                 # turn the session content into a single line json string
                 sys.stdout.write(json.dumps(session,sort_keys=True,separators=(',', ':')) + "\n")
         else:
