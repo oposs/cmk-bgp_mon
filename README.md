@@ -6,6 +6,7 @@ The special agent is designed to support different types of devices. At the mome
 
 * Cisco Nexus 9000 (HTTP/HTTPS)
 * Huawei Sx700 (SSH)
+* PaloAlto Network (HTTPS)
 
 This Plugin contains a copy of pexpect to be able to remote ssh into the Huawei switch.
 
