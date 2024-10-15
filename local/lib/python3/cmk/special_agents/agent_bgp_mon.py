@@ -206,11 +206,11 @@ class paloaltoFetcher:
         )
 
         if kg_response.status_code != 200:
-            LOGGER.warning("response status code: %s", response.status_code)
-            LOGGER.warning("response : %s", response.text)
+            LOGGER.warning("response status code: %s", kg_response.status_code)
+            LOGGER.warning("response : %s", kg_response.text)
             raise RuntimeError("Failed to fetch key")
         else:
-            LOGGER.debug("success! response: %s", response.text)
+            LOGGER.debug("success! response: %s", kg_response.text)
 
         kg_key = self.__getKey(kg_response.text)
         
@@ -223,17 +223,17 @@ class paloaltoFetcher:
         )
 
         if op_response.status_code != 200:
-            LOGGER.warning("response status code: %s", response.status_code)
-            LOGGER.warning("response : %s", response.text)
+            LOGGER.warning("response status code: %s", op_response.status_code)
+            LOGGER.warning("response : %s", op_response.text)
             raise RuntimeError("Failed to fetch bgp status")
         else:
-            LOGGER.debug("success! response: %s", response.text)
+            LOGGER.debug("success! response: %s", op_response.text)
                     
         try:
-            return self.__postprocess(response.text)
+            return self.__postprocess(op_response.text)
         except Exception as e:
             LOGGER.warning("error processing response: %s", e)
-            LOGGER.warning("response : %s", response.text)
+            LOGGER.warning("response : %s", op_response.text)
             raise ValueError("Got invalid data from host")
 
     def __getKey(self,xml):
@@ -262,20 +262,25 @@ class paloaltoFetcher:
 
         result = []
         for entry in root.findall('./result/entry'):
-            vrf_name_out = entry.get('vr')            
-            af_name = entry.find('./prefix-counter/entry').get('afi-safi')
-            neighbourid = entry.find('peer-router-id').text
-            state = entry.find('status').text
-            uptime = entry.find('status-duration').text
-
-            result.append({
-                'vrf-name-out': vrf_name_out,
-                'af-name': af_name,
-                'neighbourid': neighbourid,
-                'state': state,
-                'uptime': int(uptime),
-            })
-            
+            vrf_name_out = entry.get('vr')
+            prefix_entry = entry.find('./prefix-counter/entry')
+            if prefix_entry is None:
+                LOGGER.debug("No <prefix-counter> found in:\n%s",ET.tostring(entry,encoding="unicode"))
+            else:
+                af_name = prefix_entry.get('afi-safi')
+                neighbourid = entry.find('peer-address').text # not peer-router-id since this seems to be ip4 always
+                neighbouras = entry.find('peer-group').text 
+                state = entry.find('status').text
+                uptime = entry.find('status-duration').text
+                
+                result.append({
+                    'vrf-name-out': vrf_name_out,
+                    'af-name': af_name,
+                    'neighbourid': neighbourid,
+                    'neighbouras': neighbouras,
+                    'state': state,
+                    'uptime': int(uptime),
+                })  
         return result
 
 class huaweiFetcher:
@@ -383,11 +388,15 @@ class huaweiFetcher:
                 (?:,\sUp\sfor\s+(?P<uptime>\S+))?\s*\n
         """
         ip_pattern = re.compile(r"\d+\.\d+\.\d+\.\d+")
+        vrf_name_out = '????'
         for match in re.finditer(pattern, data, re.VERBOSE | re.DOTALL | re.IGNORECASE ):
             LOGGER.debug("Found Match --------------------\n%s",match.group(0));
             uptime = match.group("uptime")
+            new_vrf_name_out = match.group("vrf_name_out")
+            if new_vrf_name_out:
+                vrf_name_out = new_vrf_name_out
             nb = {
-                "vrf-name-out": match.group("vrf_name_out"),
+                "vrf-name-out": vrf_name_out,
                 "af-name": "ipv4" if ip_pattern.search(match.group("neighbourid")) else "ipv6",
                 "neighbourid": match.group("neighbourid"),
                 "neighbouras": match.group("neighbouras"),
