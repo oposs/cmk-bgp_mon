@@ -268,8 +268,8 @@ class paloaltoFetcher:
                 LOGGER.debug("No <prefix-counter> found in:\n%s",ET.tostring(entry,encoding="unicode"))
             else:
                 af_name = prefix_entry.get('afi-safi')
-                neighbourid = entry.find('peer-address').text # not peer-router-id since this seems to be ip4 always
-                neighbouras = entry.find('peer-group').text 
+                neighbourid = entry.find('peer-group').text # not peer-router-id since this seems to be ip4 always
+                neighbouras = entry.find('peer-address').text 
                 state = entry.find('status').text
                 uptime = entry.find('status-duration').text
                 
